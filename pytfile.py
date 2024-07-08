@@ -53,15 +53,3 @@ query_results2 = index.query(
 )
 
 print(query_results2)
-
-# Returns:
-# {'matches': [{'id': 'vec1', 'score': 1.0, 'values': [1.0, 1.5]},
-#              {'id': 'vec2', 'score': 0.868243158, 'values': [2.0, 1.0]},
-#              {'id': 'vec3', 'score': 0.850068152, 'values': [0.1, 3.0]}],
-#  'namespace': 'ns1',
-#  'usage': {'read_units': 6}}
-# {'matches': [{'id': 'vec1', 'score': 1.0, 'values': [1.0, -2.5]},
-#              {'id': 'vec3', 'score': 0.998274386, 'values': [0.5, -1.5]},
-#              {'id': 'vec2', 'score': 0.824041963, 'values': [3.0, -2.0]}],
-#  'namespace': 'ns2',
-#  'usage': {'read_units': 6}}
