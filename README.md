@@ -7,7 +7,7 @@ This is for the OpenVino toolkit it aims at creating an assistant which can retr
 
 Mentors: Ria Cheruvu and Dmitriy Pastushenkov
 
-Build Instructions
+##Build Instructions
 
 Ensure all requirements are installed in the latest version or the version which is mentioned.
 
