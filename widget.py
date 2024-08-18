@@ -21,17 +21,22 @@ from langchain_core.prompts import PromptTemplate
 cloud = os.environ.get('PINECONE_CLOUD') or 'aws'
 region = os.environ.get('PINECONE_REGION') or 'us-east-1'
 
+spec = ServerlessSpec(cloud=cloud, region=region)
+model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+
 prompt = SystemMessage(content="You are an official")
 
 new_prompt = (
     prompt + HumanMessage(content="hi") + AIMessage(content="what?") + "{input}"
 )
 
-new_prompt1 = PromptTemplate.from_template("Tell about {prompt}")+ "in detail with related time and dates"+ "with your context as {context}"
+new_prompt1 =  (
+prompt + HumanMessage(content="hi")  + "{input}" + AIMessage(content="what?") + "{context}"
+)
 
 class Widget(QWidget):
     def __init__(self, parent=None):
-        ram_ram = qtc.Signal()
+        ram = qtc.Signal()
         super().__init__(parent)
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
@@ -40,28 +45,26 @@ class Widget(QWidget):
 
     @qtc.Slot()
     def process(self):
-        api_key = self.ui.plainTextEdit2.toPlainText()
-        pc = Pinecone(api_key=api_key)
+        api_key = self.ui.plainTextEdit_2.toPlainText()
+        index_name = self.ui.plainTextEdit_3.toPlainText()
+        input = self.ui.plainTextEdit.toPlainText()
 
-        spec = ServerlessSpec(cloud=cloud, region=region)
-        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2', device=device)
-        index_name = self.ui.plainTextEdit3.toPlainText()
+        pc = Pinecone(api_key=api_key)
         index = pc.Index(index_name)
-        xq = model.encode(query).tolist()
+
+        xq = model.encode(input).tolist()
         xc = index.query(vector=xq, top_k=5, include_metadata=True)
         context = []
         for result in xc['matches']:
             context.append(f"{result['metadata']['text']}")
 
 
-        n = new_prompt.format_messages(input = "query")
-        new_prompt1.format_messages(prompt = a, context = context)
-
-        input = self.ui.plainTextEdit.toPlainText()
-        prompt = input
+        n = new_prompt.format_messages(input = input)
+        prompt_to = new_prompt1.format_messages(input = input, context = context)
         llm = Ollama(model="tinyllama")
-        a = llm.invoke(input)
-        self.ui.plainTextEdit4.setPlainText(a)
+
+        a = llm.invoke(prompt_to)
+        self.ui.plainTextEdit_4.setPlainText(a)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
