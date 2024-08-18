@@ -9,4 +9,5 @@ This is for the OpenVino toolkit it aims at creating an assistant which can retr
 ## Build Instructions
 
 Ensure all requirements are installed in the latest version or the version which is mentioned.
+
 From the command line enter command `python widget.py`
