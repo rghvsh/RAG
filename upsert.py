@@ -5,16 +5,17 @@ from sentence_transformers import SentenceTransformer
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 
-api_id = int(input("Enter telegram api_id"))
-api_hash = input("Enter api_hash")
-index_name = input("Enter index name")
-chat = input("Enter chat for which you want to retrieve messages")
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-api_key = input("Enter the api_key for pinecone")
+
+api_id = int(input("Enter telegram api_id: "))
+api_hash = input("Enter api_hash: ")
+index_name = input("Enter index name: ")
+chat = input("Enter chat for which you want to retrieve messages: ")
+api_key = input("Enter the api_key for pinecone: ")
 
 pc = Pinecone(api_key= api_key)
 
-index_name = input("Enter index name for pinecone which you want to set")
+
 
 if index_name not in pc.list_indexes().names():
     pc.create_index(
@@ -38,7 +39,7 @@ with TelegramClient("fetch1", api_id, api_hash) as client:
 
 index = pc.Index(index_name)
 
-for vectorx in len(vectors1):
+for vectorx in range(len(vectors1)):
     index.upsert(
         vectors=[
             {"id": str(vectorx),
