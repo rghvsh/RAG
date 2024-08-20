@@ -14,4 +14,5 @@ From the command line enter command `python widget.py`
 
 ## Upsert Vectors
 Run the file upsert.py using he command `python upsert.py`
+
 Enter the information asked for
