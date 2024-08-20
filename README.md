@@ -11,3 +11,9 @@ This is for the OpenVino toolkit it aims at creating an assistant which can retr
 Ensure all requirements are installed in the latest version or the version which is mentioned.
 
 From the command line enter command `python widget.py`
+
+## Upsert Vectors
+Run the file upsert.py using he command `python upsert.py`
+
+Enter the information asked for
+
