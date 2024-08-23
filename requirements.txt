@@ -6,3 +6,4 @@ pinecone-notebooks==0.1.1
 langchain
 streamlit
 ollama
+optimum[openvino,nncf]
