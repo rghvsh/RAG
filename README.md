@@ -14,7 +14,9 @@ Ria Cheruvu and Dmitriy Pastushenkov**
 Ensure all requirements are installed in the latest version or the version which is mentioned.
 
 From the command line enter command `python widget.py`
+
 ![Moving-Data-to-the-Cloud](https://github.com/user-attachments/assets/016562c6-6e4c-4716-93ee-2a2b6b0d21f9)
+
 ![numbers](https://github.com/user-attachments/assets/ad7a4a6b-c22b-4b80-a3aa-d34d6d599c1b)
 
 
