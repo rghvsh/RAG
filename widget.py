@@ -36,6 +36,7 @@ class Widget(QWidget):
         self.ui.setupUi(self)
         self.button = self.ui.pushButton
         self.button.clicked.connect(self.process)
+        self.ui.radioButton.toggled.connect(self.process1)
 
     @qtc.Slot()
     def process(self):
@@ -63,9 +64,41 @@ class Widget(QWidget):
         outputs = model.generate(**inputs, max_new_tokens=50)
         print(tokenizer.decode(outputs[0], skip_special_tokens=True))
         print(time.time(), "prompt done")
-        a = (tokenizer.decode(outputs[0], skip_special_tokens=True))
+        a = outputs
         self.ui.plainTextEdit_4.setPlainText(a)
         print(time.time(), "prompt answer")
+
+        @qtc.Slot()
+        def process1(self):
+            print(time.time(), "button clicked")
+            api_key = self.ui.plainTextEdit_2.toPlainText()
+            index_name = self.ui.plainTextEdit_3.toPlainText()
+            input = self.ui.plainTextEdit.toPlainText()
+
+            pc = Pinecone(api_key=api_key)
+            index = pc.Index(index_name)
+            print(time.time(), "match start")
+
+            xq = model.encode(input).tolist()
+            xc = index.query(vector=xq, top_k=5, include_metadata=True)
+            context = []
+            for result in xc['matches']:
+                context.append(f"{result['metadata']['text']}")
+            print(time.time(), "result match")
+
+            model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+            model = OVModelForCausalLM.from_pretrained(model_id, export=True)
+            model.to("GPU")
+            prompt = input + context[0]
+            tokenizer = AutoTokenizer.from_pretrained(model_id)
+            inputs = tokenizer(prompt, return_tensors="pt")
+            outputs = model.generate(**inputs, max_new_tokens=50)
+            print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+            print(time.time(), "prompt done")
+            a = outputs
+            self.ui.plainTextEdit_4.setPlainText(a)
+            print(time.time(), "prompt answer")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
