@@ -6,6 +6,7 @@ This is for the OpenVino toolkit it aims at creating an assistant which can retr
 
 **Mentors: Ria Cheruvu and Dmitriy Pastushenkov**
 
+To export your data follow the video given below and install data in a JSON Format, the JSON file will be inside the telegram desktop folder add the path to that file in the file field in the GUI 
 ## Build Instructions
 
 Ensure all requirements are installed in the latest version or the version which is mentioned.
