@@ -188,17 +188,7 @@ class Widget(QWidget):
                 print(len(embeddings_list), len(texts))
                 return embeddings_list
 
-            # Define a function to upsert embeddings to Pinecone
-        def upsert_embeddings_to_pinecone(index, embeddings, ids):
-            index.upsert(vectors=[(id, embedding) for id, embedding in zip(ids, embeddings)])
-
-        # Process a file and create embeddings
-        texts = process_file(file_path)
-        embeddings = create_embeddings(texts)
-
-        # Upsert the embeddings to Pinecone
-        upsert_embeddings_to_pinecone(index, embeddings, [file_path])
-
+         
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
