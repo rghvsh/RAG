@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>920</width>
+    <height>813</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>140</y>
+     <y>290</y>
      <width>321</width>
      <height>111</height>
     </rect>
@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>330</y>
+     <y>480</y>
      <width>93</width>
      <height>29</height>
     </rect>
@@ -75,7 +75,7 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>380</y>
+     <y>530</y>
      <width>311</width>
      <height>161</height>
     </rect>
@@ -88,13 +88,39 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>280</y>
+     <y>430</y>
      <width>161</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
     <string>Run using GPU</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit_5">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>170</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="plainText">
+    <string>File</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>240</y>
+     <width>93</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Load</string>
    </property>
   </widget>
  </widget>
