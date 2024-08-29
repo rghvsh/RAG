@@ -7,3 +7,4 @@ langchain
 streamlit
 ollama
 optimum[openvino,nncf]
+emoji
